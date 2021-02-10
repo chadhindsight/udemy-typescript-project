@@ -1,3 +1,18 @@
+//autobind decorator
+function autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
+
+    const originalMethod = descriptor.value
+    const adjPropertyDescriptor: PropertyDescriptor = {
+        configurable: true,
+        get() {
+            const boundFn = originalMethod.bind(this);
+            return boundFn;
+        }
+    }
+    return adjPropertyDescriptor
+}
+
+// Project Input class
 class ProjectInput {
     templateElement: HTMLTemplateElement;
     hostElement: HTMLDivElement;
@@ -7,7 +22,7 @@ class ProjectInput {
     peopleInputElement: HTMLInputElement;
 
     constructor() {
-        // '!' tells ts that this.templateElement will never be null
+        // '!' tells typescript that this.templateElement will never be null
         this.templateElement = document.getElementById(
             'project-input'
         )! as HTMLTemplateElement;
