@@ -184,7 +184,7 @@ class ProjectInput {
     );
     this.element = importedNode.firstElementChild as HTMLFormElement;
     this.element.id = 'user-input';
-
+    // target the title input field
     this.titleInputElement = this.element.querySelector(
       '#title'
     ) as HTMLInputElement;
@@ -261,3 +261,4 @@ class ProjectInput {
 const prjInput = new ProjectInput();
 const activePrjList = new ProjectList('active');
 const finishedPrjList = new ProjectList('finished');
+// NB: This is good
